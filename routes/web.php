@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::get('/github/buscar', 'GithubController@buscar');
 Route::get('/curso/create', 'CursoController@create');
+Route::get('/curso/update', 'CursoController@update');

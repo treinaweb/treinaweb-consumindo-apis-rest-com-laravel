@@ -9,9 +9,29 @@ class CursoController extends Controller
 {
     public function create(CursoRepository $cursoRepository)
     {
-        $cursoRepository->create([
-            'nome' => 'PHP OO',
+        $resposta = $cursoRepository->create([
+            'nome' => 'PHP OO parte 2',
             'linguagem' => 'PHP'
         ]);
+
+        if ($resposta) {
+            return 'criado com sucesso';
+        }
+
+        return 'Erro ao criar';
+    }
+
+    public function update(CursoRepository $cursoRepository)
+    {
+        $resposta = $cursoRepository->update('59aeX7V3JRiQzNBZ', [
+            'nome' => 'PHP Orientado a Objetos',
+            'linguagem' => 'PHP'
+        ]);
+
+        if ($resposta) {
+            return 'atualizado com sucesso';
+        }
+
+        return 'Erro ao atualizar';
     }
 }
