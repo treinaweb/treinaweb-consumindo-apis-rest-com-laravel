@@ -20,4 +20,11 @@ class CursoRepository
 
         return $response->successful();
     }
+
+    public function delete(string $id)
+    {
+        $response = Http::delete("http://172.24.192.1:3002/api/treinaweb/curso?id={$id}");
+
+        return $response->successful();
+    }
 }

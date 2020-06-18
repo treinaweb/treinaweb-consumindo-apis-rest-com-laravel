@@ -34,4 +34,15 @@ class CursoController extends Controller
 
         return 'Erro ao atualizar';
     }
+
+    public function delete(CursoRepository $cursoRepository)
+    {
+        $resposta = $cursoRepository->delete('59aeX7V3JRiQzNBZ');
+
+        if ($resposta) {
+            return 'deletado com sucesso';
+        }
+
+        return 'Erro ao deletar';
+    }
 }
