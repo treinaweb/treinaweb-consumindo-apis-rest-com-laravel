@@ -11,6 +11,11 @@ class GithubController extends Controller
     {
         $response = Http::get('https://api.github.com/search/repositories?q=EltonFonseca');
 
-        dd($response->body());
+        $repositorios = [];
+        if ($response->successful()) {
+            $repositorios = $response->json()['items'];
+        }
+
+        return view('github.buscar', \compact('repositorios'));
     }
 }
