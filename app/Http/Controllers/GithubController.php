@@ -3,18 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use App\Services\GithubService;
 
 class GithubController extends Controller
 {
-    public function buscar()
+    public function buscar(GithubService $github)
     {
-        $response = Http::get('https://api.github.com/search/repositories?q=EltonFonseca');
-
-        $repositorios = [];
-        if ($response->successful()) {
-            $repositorios = $response->json()['items'];
-        }
+        $repositorios = $github->buscarRepositorios();
 
         return view('github.buscar', \compact('repositorios'));
     }
