@@ -7,9 +7,53 @@ use App\Repositories\CursoRepository;
 
 class CursoController extends Controller
 {
-    public function create(CursoRepository $cursoRepository)
+    /**
+     * instancia do repositório usado para consumir a API
+     */
+    public CursoRepository $cursoRepository;
+
+    /**
+     * Injeta a instância do repositório na propriedade
+     *
+     * @param CursoRepository $cursoRepository
+     */
+    public function __construct(CursoRepository $cursoRepository)
     {
-        $resposta = $cursoRepository->create([
+        $this->cursoRepository = $cursoRepository;
+    }
+
+    /**
+     * lista os cursos cadastrados na api
+     *
+     * @return void
+     */
+    public function list()
+    {
+        $cursos = $this->cursoRepository->list();
+
+        dd($cursos);
+    }
+
+    /**
+     * Exibe um curso especifico usando a API
+     *
+     * @return void
+     */
+    public function show()
+    {
+        $curso = $this->cursoRepository->show('Xf6BSSuRxtl7zrgv');
+
+        dd($curso);
+    }
+
+    /**
+     * Cria um novo curso via API
+     *
+     * @return void
+     */
+    public function create()
+    {
+        $resposta = $this->cursoRepository->create([
             'nome' => 'PHP OO parte 2',
             'linguagem' => 'PHP'
         ]);
@@ -21,9 +65,14 @@ class CursoController extends Controller
         return 'Erro ao criar';
     }
 
-    public function update(CursoRepository $cursoRepository)
+    /**
+     * Atualiza um curso via API
+     *
+     * @return void
+     */
+    public function update()
     {
-        $resposta = $cursoRepository->update('59aeX7V3JRiQzNBZ', [
+        $resposta = $this->cursoRepository->update('59aeX7V3JRiQzNBZ', [
             'nome' => 'PHP Orientado a Objetos',
             'linguagem' => 'PHP'
         ]);
@@ -35,9 +84,14 @@ class CursoController extends Controller
         return 'Erro ao atualizar';
     }
 
-    public function delete(CursoRepository $cursoRepository)
+    /**
+     * Deleta um curso via API
+     *
+     * @return void
+     */
+    public function delete()
     {
-        $resposta = $cursoRepository->delete('59aeX7V3JRiQzNBZ');
+        $resposta = $this->cursoRepository->delete('59aeX7V3JRiQzNBZ');
 
         if ($resposta) {
             return 'deletado com sucesso';

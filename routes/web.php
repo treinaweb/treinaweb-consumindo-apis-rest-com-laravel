@@ -18,6 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/github/buscar', 'GithubController@buscar');
+
+Route::get('/curso/list', 'CursoController@list');
+Route::get('/curso/show', 'CursoController@show');
 Route::get('/curso/create', 'CursoController@create');
 Route::get('/curso/update', 'CursoController@update');
 Route::get('/curso/delete', 'CursoController@delete');
