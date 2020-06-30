@@ -1,4 +1,4 @@
-## Curso direto ao ponto da Treinaweb - Consumindo APIs Rest com Laravel
+## Treinaweb Direto ao Ponto - Consumindo APIs Rest com Laravel
 
 #### Lista de commits
 Aula | Video | Commit | Link 
